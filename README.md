@@ -23,7 +23,7 @@ sudo docker run \
     -e PASSWORD=<password> \
     -e DOMAINS=<domains> \
     -e INTERVAL=<interval> \
-    starwarsfan/no-ip
+    starwarsfan/alpine-noip
 ```
 
 The second mode is with a config file. To create a template config file, run:
@@ -34,7 +34,7 @@ sudo docker run \
     -d \
     -v /etc/localtime:/etc/localtime \
     -v /config/dir/path:/config \
-    starwarsfan/no-ip
+    starwarsfan/alpine-noip
 ```
 
 When run for the first time, a file named noip.conf will be created in the config dir, and the container will exit. Edit this file, adding your username (email), password, domains, and update interval. Then rerun the command to start the container.
