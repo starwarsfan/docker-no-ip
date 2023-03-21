@@ -1,11 +1,11 @@
-ARG ALPINE_VERSION="${ALPINE_VERSION:-edge-arm64}"
-FROM alpine:"${ALPINE_VERSION}" as builder
+FROM alpine:edge as builder
+ENV ALPINE_VERSION=edge
+
 LABEL maintainer="https://github.com/starwarsfan"
 
-COPY qemu-aarch64-static /usr/bin/
 
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories \
- && apk --update upgrade \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/${ALPINE_VERSION}/community" >> /etc/apk/repositories
+RUN apk --update upgrade \
  && apk add \
         autoconf \
         bash \
@@ -20,13 +20,13 @@ RUN tar vzxf noip-duc-linux.tar.gz \
  && cd noip-2.1.9-1 \
  && make
 
-FROM alpine:"${ALPINE_VERSION}"
+FROM alpine:edge
+ENV ALPINE_VERSION=edge
+
 LABEL maintainer="https://github.com/starwarsfan"
 
-COPY qemu-aarch64-static /usr/bin/
-
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories \
- && apk --update upgrade \
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/${ALPINE_VERSION}/community" >> /etc/apk/repositories
+RUN apk --update upgrade \
  && apk add \
         bash \
         curl \
