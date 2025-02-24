@@ -1,4 +1,4 @@
-FROM alpine:edge as builder
+FROM alpine:edge AS builder
 ENV ALPINE_VERSION=edge
 
 LABEL maintainer="https://github.com/starwarsfan"
