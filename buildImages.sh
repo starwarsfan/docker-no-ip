@@ -35,6 +35,7 @@ helpMe() {
 
 
 PUSH_IMAGE=''
+ALPINE_VERSION='edge'
 BUILD_ARMv7_IMAGE=false
 BUILD_ARMv8_IMAGE=false
 PLATFORM='linux/amd64'
@@ -69,6 +70,7 @@ docker buildx \
     build \
     --platform=${PLATFORM} \
     "--tag=starwarsfan/alpine-noip:${IMAGE_VERSION}" \
+    --build-arg ALPINE_VERSION=${ALPINE_VERSION} \
     ${PUSH_IMAGE} \
     .
 info " -> Done"
